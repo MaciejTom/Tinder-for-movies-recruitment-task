@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { CircularProgress, Grid, Typography } from "@mui/material";
-import MovieCard from "./MovieCard";
+import { MovieCard } from "./MovieCard";
 import { Movie } from "../models/Movie";
 import { fetchMovies } from "../api/moviesApi";
 
-export default function Movies() {
+export const Movies = () => {
   const [movies, setMovies] = useState([] as Movie[]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
@@ -24,7 +24,7 @@ export default function Movies() {
   }, []);
 
   if (isLoading) {
-    return <CircularProgress />;
+    return <CircularProgress role="loading-spinner" />;
   }
   if (error) {
     return <Typography>{error}</Typography>;
@@ -39,4 +39,4 @@ export default function Movies() {
       ))}
     </Grid>
   );
-}
+};

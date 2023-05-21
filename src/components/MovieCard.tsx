@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Movie } from "../models/Movie";
+import {useSwipe} from "../hooks/useSwipe";
 import {
   Box,
   Button,
@@ -11,14 +12,13 @@ import {
   CircularProgress,
   Typography,
 } from "@mui/material";
+import { acceptMovie, rejectMovie } from "../api/moviesApi";
 import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
-import { acceptMovie, rejectMovie } from "../api/moviesApi";
-import useSwipe from "../hooks/useSwipe";
 
 type Props = Movie;
 
-const MovieCard = ({ id, imageURL, title, summary, rating }: Props) => {
+export const MovieCard = ({ id, imageURL, title, summary, rating }: Props) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const swipeHandlers = useSwipe({ onSwiped: () => handleReject(id) });
@@ -91,5 +91,3 @@ const MovieCard = ({ id, imageURL, title, summary, rating }: Props) => {
     </Card>
   );
 };
-
-export default MovieCard;
