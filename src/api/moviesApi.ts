@@ -14,7 +14,7 @@ export const fetchMovies = async (): Promise<Movie[]> => {
     }
     const res = await response.json();
     return res;
-  } catch (err: any) {
+  } catch (err) {
     console.log(err);
     return [];
   }
@@ -27,7 +27,7 @@ export const acceptMovie = async (movieId: string): Promise<string> => {
       }
       const res = await response.json();
       return res.id;
-    } catch (err: any) {
+    } catch (err) {
       console.log(err);
       return ''
     }
@@ -40,7 +40,7 @@ export const rejectMovie = async (movieId: string): Promise<string> => {
         }
         const res = await response.json();
         return res.id;
-      } catch (err: any) {
+      } catch (err) {
         console.log(err);
         return ''
       }

@@ -15,7 +15,7 @@ export const Movies = () => {
       try {
         const res = await fetchMovies();
         setMovies(res);
-      } catch (err: any) {
+      } catch (err) {
         setError(err.message);
       }
       setIsLoading(false);
